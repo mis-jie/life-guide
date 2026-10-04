@@ -66,6 +66,32 @@ class ImporterUnitTests(unittest.TestCase):
             with self.assertRaises(importer.ImportErrorWithContext):
                 importer.parse_chapter(path)
 
+    def test_parse_chapter_excludes_group_guide_from_description(self):
+        sample = """[← 回总目录](../README.md)
+# 1. 示例
+
+真正的章节简介。
+
+本节条目按主题分成下面几块，括号里是条号。
+
+- **第一组**：示例条目（第 1 条）。
+
+### 1. 做一件事
+<!-- 成本标签: 钱=0 时间=少 毅力=否 收益=大 口径=死亡率 -->
+- 成本：不花钱。
+- 说人话：一句话。
+- 收益：有收益。
+- 证据等级：A
+- 来源：示例. <https://example.com>
+- 备注：无。
+"""
+        with tempfile.TemporaryDirectory(dir=PROJECT_DIR) as temp_dir:
+            path = Path(temp_dir) / "01-示例.md"
+            path.write_text(sample, encoding="utf-8")
+            chapter, entries = importer.parse_chapter(path)
+            self.assertEqual(chapter["description"], "真正的章节简介。")
+            self.assertEqual(len(entries), 1)
+
 
 class GeneratedDataTests(unittest.TestCase):
     def test_generated_dataset_passes_full_gate(self):

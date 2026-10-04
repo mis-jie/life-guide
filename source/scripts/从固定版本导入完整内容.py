@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""把《高性价比人生指南》固定提交导入为网站使用的静态 JSON。"""
+"""把《高性价比人生指南》指定提交导入为网站使用的静态 JSON。"""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-EXPECTED_COMMIT = "6f6d969abe19fd4aa8b30979d634f2a187be0a55"
+EXPECTED_COMMIT = "91a4f53c5ba3d3f524e5c72b4e32ab4c108015eb"
 SOURCE_REPOSITORY = "https://github.com/eternity4719/HowToLiveBetter"
 COST_WEIGHTS = {
     "money": {"0": 0, "少": 1, "多": 2},
@@ -199,6 +199,7 @@ def parse_chapter(path: Path) -> tuple[dict, list[dict]]:
     entry: dict | None = None
     seen_first_entry = False
     finished_entries = False
+    in_group_guide = False
 
     for line_number, raw_line in enumerate(lines, start=1):
         line = raw_line.strip()
@@ -238,6 +239,11 @@ def parse_chapter(path: Path) -> tuple[dict, list[dict]]:
             entry[key] = clean_markdown(field_match.group(2)) if key != "sourceText" else field_match.group(2).strip()
             continue
 
+        if not seen_first_entry and line.startswith("本节条目按主题分成下面几块"):
+            in_group_guide = True
+            continue
+        if not seen_first_entry and in_group_guide:
+            continue
         if not seen_first_entry and line and not line.startswith("[←") and not line.startswith("# "):
             intro_lines.append(clean_markdown(line))
         elif entry is not None and line and not line.startswith("[←"):
@@ -314,7 +320,7 @@ def build_dataset(source_dir: Path) -> tuple[dict, list[dict[str, str]]]:
     dataset = {
         "meta": {
             "title": "高性价比人生指南",
-            "version": "6f6d969",
+            "version": commit[:7],
             "commit": commit,
             "sourceRepository": SOURCE_REPOSITORY,
             "license": "CC BY 4.0",

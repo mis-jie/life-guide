@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""校验固定版本静态数据的数量、字段和来源链接。"""
+"""校验指定版本静态数据的数量、字段和来源链接。"""
 
 from __future__ import annotations
 
@@ -12,9 +12,9 @@ from urllib.parse import urlparse
 
 EXPECTED = {
     "chapters": 34,
-    "tips": 649,
-    "evidence": {"A": 428, "B": 171, "C": 50},
-    "valueTier": {"极高": 111, "高": 294, "一般": 244},
+    "tips": 654,
+    "evidence": {"A": 429, "B": 174, "C": 51},
+    "valueTier": {"极高": 111, "高": 298, "一般": 245},
     "controversial": 65,
     "needsVerification": 3,
 }
@@ -88,9 +88,9 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("校验通过：34 章，649 条建议。")
-    print("证据等级：A 428，B 171，C 50。")
-    print("性价比：极高 111，高 294，一般 244。")
+    print("校验通过：34 章，654 条建议。")
+    print("证据等级：A 429，B 174，C 51。")
+    print("性价比：极高 111，高 298，一般 245。")
     print("风险标记：争议 65，待核实 3。")
     return 0
 
