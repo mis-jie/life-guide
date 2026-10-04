@@ -1,0 +1,8 @@
+source/node_modules/
+source/dist/
+source/docs/superpowers/
+assets/index-*.css
+assets/index-*.js
+tmp/
+output/pdf/高性价比人生指南-life.apiferry.cc版.pdf
+*.log

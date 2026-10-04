@@ -1,0 +1,23 @@
+{
+  "name": "better-life-guide-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --configLoader native",
+    "build": "tsc --noEmit -p tsconfig.app.json && vite build --configLoader native",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "7.18.2"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "6.1.1",
+    "typescript": "5.6.3",
+    "vite": "8.3.2"
+  }
+}
