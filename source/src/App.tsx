@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { Link, NavLink, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { DownloadEntry, PDF_PATH } from "./components/下载入口";
+import { SiteLink as Link, SiteNavLink as NavLink } from "./components/站内链接";
 import { SourceList } from "./components/来源列表";
 import { GlossaryText } from "./components/术语解释";
 import { emptyFilters, FullFilter, type FilterState } from "./components/完整筛选器";

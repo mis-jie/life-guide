@@ -6,9 +6,16 @@
     <meta name="description" content="把有依据的生活建议，整理成可以阅读和行动的清单。" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>高性价比人生指南</title>
+    <style>
+      html, body { min-width: 320px; min-height: 100%; margin: 0; background: #f3f0e5; }
+      .startup-screen { min-height: 100vh; display: grid; align-content: center; justify-items: center; gap: 12px; color: #17342d; font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; }
+      .startup-mark { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: #17342d; background: #c8ef66; font: 700 22px Georgia, serif; }
+      .startup-title { margin: 0; font-size: 18px; font-weight: 800; }
+      .startup-status { margin: 0; color: #63736d; font-size: 13px; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="startup-screen" role="status" aria-live="polite"><span class="startup-mark">衡</span><p class="startup-title">生活选择指南</p><p class="startup-status">正在打开…</p></div></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
