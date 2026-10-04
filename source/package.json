@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "data:import": "python scripts/从固定版本导入完整内容.py",
+    "data:check": "python scripts/校验固定版本数据.py src/data/guide-full.json",
+    "test:data": "python -m unittest discover scripts/tests",
     "dev": "vite --host 127.0.0.1 --configLoader native",
     "build": "tsc --noEmit -p tsconfig.app.json && vite build --configLoader native",
     "preview": "vite preview --host 127.0.0.1"

@@ -1,5 +1,7 @@
 source/node_modules/
 source/dist/
+__pycache__/
+*.pyc
 source/docs/superpowers/
 assets/index-*.css
 assets/index-*.js

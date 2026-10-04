@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
+    // 完整收录 649 条正文与来源，单文件体积会高于普通展示站。
+    chunkSizeWarningLimit: 2500,
     rollupOptions: {
       output: {
         entryFileNames: "assets/app.js",
